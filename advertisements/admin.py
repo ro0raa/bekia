@@ -1,6 +1,8 @@
 from django.contrib import admin
-from .models import advertisement,images
+from .models import Advertisement,Images,AdvTypes
 
-admin.site.register(advertisement)
-admin.site.register(images)
+
+admin.site.register(AdvTypes)
+admin.site.register(Advertisement)
+admin.site.register(Images)
 # Register your models here.

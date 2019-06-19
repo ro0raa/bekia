@@ -1,0 +1,312 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"mod",
+				"ModelForm"
+			],
+			[
+				"ma",
+				"max\tfunction"
+			],
+			[
+				"t",
+				"True\tinstance"
+			],
+			[
+				"for",
+				"forms"
+			],
+			[
+				"fo",
+				"forms"
+			],
+			[
+				"mode",
+				"ModelForm\tclass"
+			],
+			[
+				"ad",
+				"AdvForm\tclass"
+			],
+			[
+				"cas",
+				"CASCADE\tfunction"
+			],
+			[
+				"m",
+				"Model"
+			],
+			[
+				"Register",
+				"register\tfunction"
+			],
+			[
+				"i",
+				"images\tclass"
+			],
+			[
+				"ima",
+				"ImageField\tclass"
+			],
+			[
+				"max",
+				"max_length"
+			],
+			[
+				"user",
+				"User"
+			],
+			[
+				"base",
+				"BaseUserManager\tclass"
+			],
+			[
+				"b",
+				"base_user\tmodule"
+			],
+			[
+				"ge",
+				"get_user_model\tmodule"
+			],
+			[
+				"ch",
+				"connectedby_choices\tstatement"
+			],
+			[
+				"tr",
+				"True\tinstance"
+			],
+			[
+				"email",
+				"EmailField\tclass"
+			],
+			[
+				"mo",
+				"Model\tclass"
+			],
+			[
+				"ur",
+				"urls"
+			],
+			[
+				"INC",
+				"include\tmodule"
+			],
+			[
+				"IN",
+				"include"
+			],
+			[
+				"e",
+				"exc"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Anaconda: Vagrant Enable"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 234.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/randahisham/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/randahisham/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/randahisham/Desktop/django/bekiaaenv/bekia/advertisements/models.py",
+		"/Users/randahisham/Desktop/django/bekiaaenv/bekia/templates/users/profile.html",
+		"/Users/randahisham/Desktop/django/bekiaaenv/bekia/templates/advertisements/add_advertise.html",
+		"/Users/randahisham/Desktop/django/bekiaaenv/bekia/advertisements/admin.py",
+		"/Users/randahisham/Desktop/django/bekiaaenv/bekia/advertisements/tests.py",
+		"/Users/randahisham/Desktop/django/bekiaaenv/bekia/bekia/urls.py",
+		"/Users/randahisham/Desktop/django/bekiaaenv/bekia/bekia/settings.py",
+		"/Users/randahisham/Desktop/django/bekiaaenv/bekia/ad/__init__.py",
+		"/Users/randahisham/Desktop/django/bekiaaenv/bekia/bekia/__init__.py",
+		"/Users/randahisham/Library/Application Support/Sublime Text 3/Packages/User/python3.sublime-build",
+		"/Library/Python/2.7/site-packages/django/contrib/auth/models.py",
+		"/Library/Python/2.7/site-packages/django/__init__.py",
+		"/Users/randahisham/Desktop/django/bekiaaenv/bekia/advertisements/urls.py",
+		"/Library/Python/2.7/site-packages/django/contrib/auth/__init__.py"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 38.0
+	},
+	"input":
+	{
+		"height": 50.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 192.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 192.0
+	},
+	"pinned_build_system": "Packages/User/python3.sublime-build",
+	"project": "views.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 231.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
