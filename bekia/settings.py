@@ -38,7 +38,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
 
- 
+
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,7 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
      'advertisements',
     'ad.apps.AdConfig',
- 
+    'crispy_forms',
+
+     
 ]
 
 MIDDLEWARE = [
@@ -61,6 +64,21 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'bekia.urls'
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
+
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window; you may, of course, use a different value.
+REGISTRATION_AUTO_LOGIN = True 
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'randahesham@gmail.com'
+EMAIL_HOST_PASSWORD = 'emanmohamedahmed'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+
 
 TEMPLATES = [
     {
@@ -128,7 +146,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
+SITE_ID=1
 STATIC_URL = '/static/'
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR,"project_static"),
@@ -136,3 +154,7 @@ STATICFILES_DIRS=(
 STATIC_ROOT=os.path.join(BASE_DIR,"staticfiles")
 MEDIA_URL="/media/"
 MEDIA_ROOT=os.path.join(BASE_DIR, "staticfiles/media/")
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_URL='/accounts/login/'

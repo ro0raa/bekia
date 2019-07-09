@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block content%}
+{% load crispy_forms_tags %}
+
+<h1>Register Here</h1>
+
+{% if user.is_authenticated %}
+<p> welcome   {{ user.username }}  u already loginned</p>
+
+{%else%}
+
+ <form method="POST" enctype="multipart/form-data">
+
+                 {% csrf_token %}
+
+                {{form|crispy}}
+
+                <input type="submit" value="Submit" />
+        </form>
+        {%endif%}
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html'%}
+{% block content%}
+{% load crispy_forms_tags %}
+    <form method="POST" enctype="multipart/form-data">
+
+     {% csrf_token %}
+
+<fieldset class="form-group">
+      <legend class="border-bottom mb-4">new advertisement</legend>
+
+      <div class="form-group">
+                 {{form|crispy}}
+
+      </div>
+  </fieldset>
+  <fieldset class="form-group">
+   <legend class="border-bottom mb-4">images</legend>
+
+  
+<h2>---------------------------------</h2>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+               <td colspan="2">Contact info</td>
+
+     </tr>
+  </thead>
+  <tbody>
+{{ formsets.management_form }}
+
+{% for formset in formsets.forms %}
+<tr>
+       <td> 
+
+
+                  {% if formset.instance.image %}
+ <img  class="img-thumbnail" src="/media/{{formset.instance.image}}"
+ width="200" height="200">
+{%endif%}</td>
+<td>
+ 
+                   {{formset}}
+
+</form>
+ 
+
+ </td>
+     </tr>
+ 
+ 
+{%endfor%}
+ 
+</tbody>
+</table>
+ </fieldset>
+    <legend class="border-bottom mb-4"></legend>
+
+  <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

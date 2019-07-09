@@ -1,5 +1,8 @@
 {% extends 'base.html'%}
+ 
 {% block content%}
+{% load crispy_forms_tags %}
+
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
@@ -7,8 +10,58 @@
       <legend class="border-bottom mb-4">new advertisement</legend>
 
       <div class="form-group">
-      	      {{form.as_p}}
+        
+<!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">new advertisement type</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       new type: <input type="text"  id="advname"> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="savetype()" >Save</button>
+       </div>
+    </div>
+  </div>
+</div>
+</div>
+         {{ form.title|as_crispy_field }}
+  
+ <div class="row">
+      <div class="col-6">
+ 
+               {{ form.adv_type|as_crispy_field }}
 
+    </div>
+      <div class="col-6">
+</br>
+                 <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+add new type</button>
+
+
+</div>
+</div>
+</div>
+
+                {{ form.desc|as_crispy_field }}
+                 {{ form.name|as_crispy_field }}
+                {{ form.mob|as_crispy_field }}
+                {{ form.city|as_crispy_field }}
+                                {{ form.email|as_crispy_field }}
+
+               {{ form.connectby|as_crispy_field }}
+ 
+
+
+ 
       </div>
   </fieldset>
   <fieldset class="form-group">
@@ -28,5 +81,43 @@
   <input type="submit" value="Submit">
 
 </form>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+
+window.CSRF_TOKEN = "{{ csrf_token }}";
+
+
+
+
+
+function savetype()
+{
+ var type = document.getElementById("advname").value;
+
+   
+      jQuery.ajax({
+        url: '/adv/savetype/'+type+'/',
+        dataType: 'json',
+        success: function (data) {
+ 
+var x = document.getElementById("id_adv_type");
+var option = document.createElement("option");
+option.text = type;
+option.value=data.id
+x.add(option);
+
+ 
+
+
+                   }
+      });
+
+}
+
+
+</script>
+
+
 
 {% endblock %}
