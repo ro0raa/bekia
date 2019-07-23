@@ -1,12 +1,25 @@
 {% extends 'base.html'%}
 {% block content%}
+<style>
+    .bs-example{
+        margin: 30px;
+        width: 900px;
+
+    }
+</style>
+
+
 {% load crispy_forms_tags %}
+
+
+<div class="bs-example">
+
     <form method="POST" enctype="multipart/form-data">
 
      {% csrf_token %}
 
 <fieldset class="form-group">
-      <legend class="border-bottom mb-4">new advertisement</legend>
+      <legend class="border-bottom mb-4">{{form.title.value}}</legend>
 
       <div class="form-group">
                  {{form|crispy}}
@@ -14,50 +27,40 @@
       </div>
   </fieldset>
   <fieldset class="form-group">
-   <legend class="border-bottom mb-4">images</legend>
 
   
-<h2>---------------------------------</h2>
+     <legend class="border-bottom mb-4">images</legend>
 
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-               <td colspan="2">Contact info</td>
 
-     </tr>
-  </thead>
-  <tbody>
 {{ formsets.management_form }}
+        <div class="row">
 
 {% for formset in formsets.forms %}
-<tr>
-       <td> 
-
+<div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
 
                   {% if formset.instance.image %}
- <img  class="img-thumbnail" src="/media/{{formset.instance.image}}"
+ <img  class="card-img-top" src="/media/{{formset.instance.image}}"
  width="200" height="200">
-{%endif%}</td>
-<td>
- 
+{%else%}
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                 {%endif%}
+                <div class="card-body">
+
                    {{formset}}
+                </div>
+            </div>
+</div>
+    {%endfor%}
 
-</form>
+        </div>
  
 
- </td>
-     </tr>
- 
- 
-{%endfor%}
- 
-</tbody>
-</table>
+
  </fieldset>
-    <legend class="border-bottom mb-4"></legend>
 
-  <input type="submit" value="Submit">
+  <input type="submit" value="update">
 </form>
-
+</div>
 {% endblock %}

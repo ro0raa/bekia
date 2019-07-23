@@ -1,0 +1,129 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- Custom styles for this page -->
+  <link href="/static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
+<div class="container-fluid">
+
+          <!-- Page Heading -->
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">my advertisements</h6>
+            </div>
+            {% if advs%}
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th> </th>
+
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>   </th>
+                      <th>  </th>
+                      <th>  </th>
+                     </tr>
+                  </tfoot>
+                  <tbody>
+                  {%for adv in advs %}
+                    <tr>
+                      <td>{{adv.title}}</td>
+                      <td>{{adv.desc}}</td>
+                      <td>     <a role="button" href="{% url 'adv:update_adv' adv.id %}" class="btn btn-success">Edit</a>
+    <button type="submit" class="btn btn-primary" onclick="deleterow(this,'{{adv.id}}');">Delete</button>
+</td>
+
+                    </tr>
+
+{%endfor%}
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+<!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+           </div>
+        </div>
+      </footer>
+{%else%}
+            <div class="card-header py-3">
+
+              <h6 class="m-0 font-weight-bold ">you haven't any advertisement yet</h6>
+
+            </div>
+
+{% endif %}
+{% endblock%}
+
+{% block footer%}
+  <!-- Bootstrap core JavaScript-->
+  <script src="/static/vendor/jquery/jquery.min.js"></script>
+  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="/static/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="/static/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="/static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="/static/js/demo/datatables-demo.js"></script>
+<script type="text/javascript">
+window.CSRF_TOKEN = "{{ csrf_token }}";
+
+
+function  deleterow(r,id){
+  alert(id);
+  var i = r.parentNode.parentNode.rowIndex;
+  var table=$('#dataTable').DataTable();
+
+
+  jQuery.ajax({
+        url: '/adv/deleteadv/'+id+'/',
+        dataType: 'json',
+        success: function (data) {
+
+ alert("advertisement has been deleted successfuly");
+                   }
+      });
+
+
+
+
+
+        var tr = $(r).closest('tr');
+
+   document.getElementById("dataTable").deleteRow(i);
+           table.row(tr).remove().draw( false );
+
+
+}
+
+
+
+
+
+</script>
+{% endblock%}

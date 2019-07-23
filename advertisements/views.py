@@ -33,6 +33,20 @@ def save_adv_type(request,type):
 	return JsonResponse(data)
 
 
+@ensure_csrf_cookie
+def delete_adv(request,id):
+	data=0
+
+	try:
+		Advertisement.objects.filter(id=id).delete()
+		Images.objects.filter(advertisement_id=id).delete()
+
+
+	except:
+		data=1
+	return JsonResponse(data,safe=False)
+
+
 
 def save_images(request,advertise):
 	#import pdb;pdb.set_trace()
@@ -73,7 +87,7 @@ def update_adv(request,adv_id):
 			ImagesFormSet=modelformset_factory(Images,form=ImageForm,fields=('image', ),extra=8-images_list.count(),can_delete=True)
 			formset=ImagesFormSet(request.POST,request.FILES,prefix='form2')
 			if images_list.count() == 0 :
-				i=0
+				i=1
 				for m, img in request.FILES.items():
 					img=Images(image=img,advertisement=adv_obj,order=i)
 					img.save()
@@ -82,7 +96,7 @@ def update_adv(request,adv_id):
 			else:
 				images = formset.save(commit=False)
 				#import pdb;pdb.set_trace()	
-				i=0
+				i=1
 				for image in images:
 					image.advertisement =adv_obj
 					image.order=i
@@ -91,7 +105,7 @@ def update_adv(request,adv_id):
 				for obj in formset.deleted_objects:
 					obj.delete()
 
-			return redirect('show_adv', adv_id=adv_obj.id)
+			return redirect('adv:show_adv', adv_id=adv_obj.id)
 
 
 

@@ -3,5 +3,58 @@
 {% load static %}
 
 {% block content %}
-<br><br><br><br>
-{% endblock %}
+
+        <div class="row">
+
+{% for obj,im in advs%}
+ <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                {% if im %}
+                <a href="#"><img class="card-img-top" src="/media/{{im}}" alt="" width="700" height="400"></a>
+
+                {%else%}
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              {%endif%}
+                <div class="card-body">
+                <h4 class="card-title">
+                  <a href="{% url 'adv:show_adv' obj.id %}">{{obj.title}}</a>
+                </h4>
+                 <p class="card-text">{{obj.desc}}</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              </div>
+            </div>
+          </div>
+{% endfor %}
+        </div>
+
+
+<nav aria-label="Page navigation example">
+
+{% if advs.has_other_pages %}
+  <ul class="pagination">
+    {% if advs.has_previous %}
+       <li class="page-item"><a class="page-link" href="?page={{ advs.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+          <li class="page-item disabled">
+<span class="page-link">&laquo;</span></li>
+    {% endif %}
+    {% for i in advs.paginator.page_range %}
+      {% if advs.number == i %}
+             <li class="page-item active">
+<span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if advs.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ advs.next_page_number }}">&raquo;</a></li>
+    {% else %}
+          <li class="page-item disabled">
+<span class="page-link">&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</nav>
+ {% endblock %}

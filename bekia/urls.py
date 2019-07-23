@@ -17,13 +17,18 @@ from django.contrib import admin
 from django.urls import path ,include
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import index, profile
+from .views import index, profile,dashboard
+from django.contrib.auth import login
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('profile/', profile , name='profile'),
     path('adv/',include('advertisements.urls',namespace='adv'),name='adv'),
     path('accounts/', include('registration.backends.default.urls')),
+    path('accounts/login/',login, name='login'),
+    path('accounts/dashboard/', dashboard, name='dashboard'),
+    path('accounts/profile/',dashboard),
 
 ]
 if settings.DEBUG:

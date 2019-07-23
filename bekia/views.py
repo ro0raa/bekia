@@ -3,10 +3,35 @@ from django.contrib.auth.models import User
 from .forms import UserUpdateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from advertisements.models import  Advertisement,Images
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def index(request):
-	return render(request, 'index.html',{})
+	adv_list=Advertisement.objects.all().order_by('-created')
+	images=Images.objects.filter(order=1)
+	dict={}
+
+	for obj in adv_list:
+		image=None
+		for m in images:
+			print(m.advertisement.id)
+			if obj.id==m.advertisement.id:
+				image=m.image
+		dict.update({obj:image})
+
+	page = request.GET.get('page', 1)
+	t = tuple(dict.items())
+
+	paginator = Paginator(t, 6)
+	try:
+		advs = paginator.page(page)
+	except PageNotAnInteger:
+		advs = paginator.page(1)
+	except EmptyPage:
+		advs = paginator.page(paginator.num_pages)
+
+	return render(request, 'index.html',{'advs':advs,})
 
 
 
@@ -33,3 +58,13 @@ def profile(request):
 			
 			}
 	return render(request, 'users/profile.html', context)
+
+
+@login_required
+def dashboard(request):
+	adv_list=Advertisement.objects.filter(user=request.user)
+	context={
+				'advs': adv_list,
+    		}
+	return render(request, 'dashboard.html',context)
+

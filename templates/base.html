@@ -16,46 +16,69 @@
 
  
 <body class="fluid">
-    	{% include 'ad.html' %}
-    	<!-- first nav -->
-	<div class="container">
+ 	<div class="container">
 	  <div class="row">
+
+
 	  		<div class="col-md-6">
+
+
+
 	         <img class="p-2" src="{% static 'img/logo.png' %}" style=" width: 200px; height: 200px; " ></img>
-			   
 	        </div>
+
+
 	        <div class="col-md-6 text-right" style="margin-top: 5em;">
-	    		<button type="button" class="btn btn-light custom-button-width .navbar-right">Help &amp; Contact</button>
-				<button type="button" class="btn btn-outline-primary custom-button-width .navbar-right"><i class="fas fa-user-alt"></i>  My Account</button>
-				<button type="button" class="btn btn-success custom-button-width .navbar-right"><i class="fas fa-plus"></i> place an Ad</button>
-	    	</div>
+				{% if user.is_authenticated %}
+
+
+
+  				<a type="button" href="{% url 'dashboard' %}" class="btn btn-outline-primary custom-button-width .navbar-right"><i class="fas fa-user-alt"></i>  My Account</a>
+
+				{%else%}
+				<a type="button" href="{% url 'login' %}"  class="btn btn-outline-primary custom-button-width .navbar-right"><i class="fas"></i>login</a>
+
+				{%endif%}
+				<a type="button" href="{% url 'adv:save_adv'%}" class="btn btn-outline-primary custom-button-width .navbar-right"><i class="fas fa-plus"></i> place an Ad</a>
+
+
+
+  <div class="col text-lg-right" style="margin-top: 2em;">
+
+		{% if user.is_authenticated %}
+ 				Welcome <a  href="{% url 'profile' %}" >{{user.username}}
+</a>
+	{% endif %}
+					</div>
+			</div>
+	  </div>
+			</div>
 	  </div>
 	</div>
 
 
-   <div class="fluid" style="background-color: #F2F3F4;">
 
-			<div class="container">
-    			{% include 'navbar.html' %}
-			</div>
-	</div>
+
     	{% block content %}
+
+
+
+
     	{% endblock %}
 
 
    </div>
 <!-- footer -->
 
-		<div class="container">
-			<hr>
-		{% include 'footer.html' %}
-		</div>
+
 <!-- javascript CDN -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
  <script>jQuery.noConflict();</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
+    	{% block footer%}
+{%endblock%}
 
     </body>
   </html>
